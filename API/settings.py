@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from decouple import config
+import os
+from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'rest_framework',
     'django_advanced_password_validation',
+    'djoser',
+    'rest_framework.authtoken'
 
 ]
 
@@ -94,14 +98,14 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
         'OPTIONS': {
-            'user_attrivutes': ('username','email','phone_number'),
+            'user_attributes': ('username','email','phone_number'),
             'max_similarity' : 0.5
         }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
-            'min_digits': 8
+            'min_length': 8
         }
     },
     {
@@ -132,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django_advanced_password_validation.advanced_password_validation.ContainsSpecialCharactersValidator',
         'OPTIONS': {
-            'min_characters': 8
+            'min_characters': 1
         }
     },
 ]
@@ -159,3 +163,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('Bearer',),
+   'ACCESS_TOKEN_LIFETIME' : timedelta(minutes=1),
+   'REFRESH_TOKEN_LIFETIME' : timedelta(minutes=60),
+}

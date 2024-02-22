@@ -33,9 +33,10 @@ class CustomManagerModel(BaseUserManager):
         return self.create_user(email,password,**extra_fields)
     
 class User(AbstractUser):
-    username = models.CharField(max_length = 25,unique = True)
-    email = models.EmailField(max_length = 35,unique = True, help_text = "Add your Email", validators=[EmailValidator(message="Invalid email address.")])
+    username = models.CharField(max_length = 25)
+    email = models.EmailField(max_length = 35,unique = True, null = True, blank = True,help_text = "Add your Email", validators=[EmailValidator(message="Invalid email address.")])
     phone_number = PhoneNumberField(null=False,unique=True,help_text = "Write Phone Number")
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username','phone_number']
