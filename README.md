@@ -1,11 +1,6 @@
 # Delivery_API
 RESTful API built with Django Rest Framework for managing pizza delivery orders.
 
-## PIZZA DELIVERY API
-This is a REST API for a Pizza delivery service built for fun and learning with FastAPI, SQLAlchemy and PostgreSQL. The video playlist is 
-[here](https://www.youtube.com/playlist?list=PLEt8Tae2spYnLMAf8RGCNYhovIFZHVsPP)
-
-
 ## ROUTES TO IMPLEMENT
 | METHOD | ROUTE | FUNCTIONALITY |ACCESS|
 | ------- | ----- | ------------- | ------------- |
