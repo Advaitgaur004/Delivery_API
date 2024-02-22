@@ -20,6 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
         min_length=8,
         validators=[validate_password],
         help_text="Enter your password (at least 8 characters).",
+        write_only=True,
     )
 
     class Meta:
@@ -28,3 +29,14 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         return super().validate(attrs)
+    
+    def create(self, validated_data):
+        user = User.objects.create(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            phone_number=validated_data['phone_number']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+    

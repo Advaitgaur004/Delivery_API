@@ -3,10 +3,15 @@ from rest_framework import generics,status
 from .serializers import UserSerializer
 from rest_framework.response import Response
 import json
+from drf_yasg.utils import swagger_auto_schema
+
 # Create your views here.
 
 class CreateView(generics.GenericAPIView):
     serializer_class = UserSerializer
+    
+    @swagger_auto_schema(operation_summary="Register a new user")
+    
     def post(self,request):
         data = request.data
         serailizer = UserSerializer(data=data)
