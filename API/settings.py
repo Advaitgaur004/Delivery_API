@@ -141,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django_advanced_password_validation.advanced_password_validation.ContainsLowercaseValidator',
         'OPTIONS': {
-            'min_lowercase': 4
+            'min_lowercase': 2
         }
     },
     {
