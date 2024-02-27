@@ -1,5 +1,5 @@
 # Delivery_API
-RESTful API built with Django Rest Framework for managing pizza delivery orders.
+RESTful API built with Django Rest Framework for managing delivery orders.
 
 ## ROUTES TO IMPLEMENT
 | METHOD | ROUTE | FUNCTIONALITY |ACCESS|
